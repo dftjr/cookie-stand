@@ -1,2 +1,20 @@
 'use strict'
 console.log(test);
+
+let hour = ['6a.m', '7a.m', , , , ];
+
+let seattle = {
+  name: 'Seattle',
+  min: 23,
+  max: 65,
+  avg: 6.3,
+  getRandomCustPerHour: function() {
+    return Math.floor(Math.random() * (this.max  - this.min +1) + this.min);
+  }
+  calculateCookiesPerHour: function() {
+  let customersThisHour = this.getRandomCustPerHour();
+  let cookiesSoldThisHour = Math.ceil(customersThisHour * this.avg);
+  console.log(cookiesSoldThisHour);
+  }
+}
+console.log(seattle.getRandomCustPerHour());
