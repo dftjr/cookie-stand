@@ -32,7 +32,6 @@ let seattle = {
     console.log(this.totalSale);
   },
   render: function () {
-
     this.getTime();
     console.log(this.sales);
     let list = document.createElement('ul');
@@ -47,7 +46,6 @@ let seattle = {
     list.appendChild(totalList);
     totalList.textContent = `Total: ${this.totalSale}`;
   },
-
 }
 
 seattle.render();
