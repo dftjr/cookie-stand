@@ -4,7 +4,10 @@ console.log('test');
 
 let timeOfDay = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 let mypage = document.getElementById('salesdata');
-
+let tableBody = document.querySelector('tbody');
+// let tableHead
+// let tableFooter
+console.log(tableBody);
 
 // STORE LOCATIONS & STATS
 let seattle = {
