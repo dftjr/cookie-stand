@@ -9,3 +9,8 @@ DIV.link {
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
+ul {
+  border: 2px solid rebeccapurple;
+  margin: 25px;
+}
