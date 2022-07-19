@@ -1,6 +1,10 @@
-ul {
+DIV.link {
   border: 2px solid rebeccapurple;
-  margin: 25 px;
-  padding: 25px;
+  padding: 50px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: 50%;
+  transform: translate(-50%, -50%);
 }
-
