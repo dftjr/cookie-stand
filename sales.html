@@ -1,25 +1,19 @@
-'use strict'
-console.log(test);
-
-let hour = ['6a.m', '7a.m', , , , ];
-
-let seattle = {
-  name: 'Seattle',
-  min: 23,
-  max: 65,
-  avg: 6.3,
-  getRandomCustPerHour: function() {
-    return Math.floor(Math.random() * (this.max  - this.min +1) + this.min);
-  }
-  calculateCookiesPerHour: function() {
-  let customersThisHour = this.getRandomCustPerHour();
-  let cookiesSoldThisHour = Math.ceil(customersThisHour * this.avg);
-  console.log(cookiesSoldThisHour);
-  }
-}
-console.log(seattle.getRandomCustPerHour());
-
-// determining objects lab-06
-// putting data in tables on lab-07
-// css lab-8
-// polishing up lab-09
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-b">
+    <title>Cookies</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header>
+    </header>
+      <main>
+        <section id="saledata"></section>
+      </main>
+    <footer>
+    </footer>
+    <script src="js/app.js"></script>
+  </body>
+</html>
