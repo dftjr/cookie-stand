@@ -31,16 +31,16 @@ let seattle = {
   },
   render: function () {
     this.getTime();
-    let newList = document.createElement('ul');
-    mypage.appendChild(newList);
-    newList.textContent = `${this.name}`;
+    let list = document.createElement('ul');
+    mypage.appendChild(list);
+    list.textContent = `${this.name}`;
     for (let i = 0; i < this.sales.length; i++) {
-      let soldAmt = document.createElement('li');
-      newList.appendChild(soldAmt);
-      soldAmt.textContent = `${timeOfDay[i]}: ${this.sales[i]}`;
+      let listAmt = document.createElement('li');
+      list.appendChild(listAmt);
+      listAmt.textContent = `${timeOfDay[i]}: ${this.sales[i]}`;
     }
     let totalAmt = document.createElement('li');
-    totalAmt.appendChild(totalAmt);
+    list.appendChild(totalAmt);
     totalAmt.textContent = `Total: ${this.totalSale}`;
   },
 }
@@ -71,16 +71,16 @@ let tokyo = {
   },
   render: function () {
     this.getTime();
-    let newList = document.createElement('ul');
-    mypage.appendChild(newList);
-    newList.textContent = `${this.name}`;
+    let list = document.createElement('ul');
+    mypage.appendChild(list);
+    list.textContent = `${this.name}`;
     for (let i = 0; i < this.sales.length; i++) {
-      let soldAmt = document.createElement('li');
-      newList.appendChild(soldAmt);
-      soldAmt.textContent = `${timeOfDay[i]}: ${this.sales[i]}`;
+      let listAmt = document.createElement('li');
+      list.appendChild(listAmt);
+      listAmt.textContent = `${timeOfDay[i]}: ${this.sales[i]}`;
     }
     let totalAmt = document.createElement('li');
-    totalAmt.appendChild(totalAmt);
+    list.appendChild(totalAmt);
     totalAmt.textContent = `Total: ${this.totalSale}`;
   },
 }
@@ -111,16 +111,16 @@ let dubai = {
   },
   render: function () {
     this.getTime();
-    let newList = document.createElement('ul');
-    mypage.appendChild(newList);
-    newList.textContent = `${this.name}`;
+    let list = document.createElement('ul');
+    mypage.appendChild(list);
+    list.textContent = `${this.name}`;
     for (let i = 0; i < this.sales.length; i++) {
-      let soldAmt = document.createElement('li');
-      newList.appendChild(soldAmt);
-      soldAmt.textContent = `${timeOfDay[i]}: ${this.sales[i]}`;
+      let listAmt = document.createElement('li');
+      list.appendChild(listAmt);
+      listAmt.textContent = `${timeOfDay[i]}: ${this.sales[i]}`;
     }
     let totalAmt = document.createElement('li');
-    totalAmt.appendChild(totalAmt);
+    list.appendChild(totalAmt);
     totalAmt.textContent = `Total: ${this.totalSale}`;
   },
 }
@@ -151,16 +151,16 @@ let paris = {
   },
   render: function () {
     this.getTime();
-    let newList = document.createElement('ul');
-    mypage.appendChild(newList);
-    newList.textContent = `${this.name}`;
+    let list = document.createElement('ul');
+    mypage.appendChild(list);
+    list.textContent = `${this.name}`;
     for (let i = 0; i < this.sales.length; i++) {
-      let soldAmt = document.createElement('li');
-      newList.appendChild(soldAmt);
-      soldAmt.textContent = `${timeOfDay[i]}: ${this.sales[i]}`;
+      let listAmt = document.createElement('li');
+      list.appendChild(listAmt);
+      listAmt.textContent = `${timeOfDay[i]}: ${this.sales[i]}`;
     }
     let totalAmt = document.createElement('li');
-    totalAmt.appendChild(totalAmt);
+    list.appendChild(totalAmt);
     totalAmt.textContent = `Total: ${this.totalSale}`;
   },
 }
@@ -191,16 +191,16 @@ let lima = {
   },
   render: function () {
     this.getTime();
-    let newList = document.createElement('ul');
-    mypage.appendChild(newList);
-    newList.textContent = `${this.name}`;
+    let list = document.createElement('ul');
+    mypage.appendChild(list);
+    list.textContent = `${this.name}`;
     for (let i = 0; i < this.sales.length; i++) {
-      let soldAmt = document.createElement('li');
-      newList.appendChild(soldAmt);
-      soldAmt.textContent = `${timeOfDay[i]}: ${this.sales[i]}`;
+      let listAmt = document.createElement('li');
+      list.appendChild(listAmt);
+      listAmt.textContent = `${timeOfDay[i]}: ${this.sales[i]}`;
     }
     let totalAmt = document.createElement('li');
-    totalAmt.appendChild(totalAmt);
+    list.appendChild(totalAmt);
     totalAmt.textContent = `Total: ${this.totalSale}`;
   },
 }
