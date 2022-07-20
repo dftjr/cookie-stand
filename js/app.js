@@ -1,211 +1,85 @@
 'use strict';
 
-console.log('test');
+let testPage = document.getElementById('test');
+console.log(testPage);
+let tableBody = document.querySelector('tbody');
+console.log(tableBody);
+let tableHead = document.querySelector('thead');
+console.log(tableHead);
+let tableFooter = document.querySelector('tfoot');
+console.log(tableFooter);
+
 
 let timeOfDay = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-let mypage = document.getElementById('salesdata');
-let tableBody = document.querySelector('tbody');
-// let tableHead
-// let tableFooter
-console.log(tableBody);
 
-// STORE LOCATIONS & STATS
-let seattle = {
-  name: 'Seattle',
-  min: 23,
-  max: 65,
-  avg: 6.3,
-  sales: [],
-  totalSale: 0,
-  getRandomCustPerHour: function () {
-    return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
-  },
-  cookiesPerHour: function () {
-    let customersThisHour = this.getRandomCustPerHour();
-    let cookiesSoldThisHour = Math.ceil(customersThisHour * this.avg);
-    return (cookiesSoldThisHour);
-  },
-  getTime: function () {
+function Store(name, min, max, avg, sales, totals) {
+  this.name = name;
+  this.min = min;
+  this.max = max;
+  this.avg = avg;
+  this.sales = [];
+  this.totals = 0;
+
+  function getRandomCustPerHour() {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  
+  function cookiesPerHour() {
     for (let i = 0; i < timeOfDay.length; i++) {
-      let value = this.cookiesPerHour();
-      this.sales.push(value);
-      this.totalSale += value;
+    let customersThisHour = getRandomCustPerHour();
+    let cookiesSoldThisHour = Math.ceil(customersThisHour * avg);
+    sales.push(cookiesSoldThisHour);
+    totals += cookiesSoldThisHour;
+    console.log(totals);
+    console.log(sales);
     }
-  },
-  render: function () {
-    this.getTime();
-    let list = document.createElement('ul');
-    mypage.appendChild(list);
-    list.textContent = `${this.name}`;
-    for (let i = 0; i < this.sales.length; i++) {
-      let listAmt = document.createElement('li');
-      list.appendChild(listAmt);
-      listAmt.textContent = `${timeOfDay[i]}: ${this.sales[i]}`;
+  } 
+  cookiesPerHour();
+  console.log(sales);
+  
+  this.renderTable = function() {
+    let trRow = document.createElement('tr');
+    tableBody.appendChild(trRow);
+
+    let tdName = document.createElement('td');
+    trRow.appendChild(tdName);
+    tdName.textContent = name;
+
+    for (let i = 0; i < sales.length; i++) {
+      let tdCookies = document.createElement('td');
+      trRow.appendChild(tdCookies);
+      tdCookies.textContent = sales[i];
     }
-    let totalAmt = document.createElement('li');
-    list.appendChild(totalAmt);
-    totalAmt.textContent = `Total: ${this.totalSale}`;
-  },
+
+    let tdTotal = document.createElement('td');
+    trRow.appendChild(tdTotal);
+    tdTotal.textContent = totals;
+  } 
+  this.renderTable();
 }
 
-seattle.render();
-
-let tokyo = {
-  name: 'Tokyo',
-  min: 3,
-  max: 24,
-  avg: 1.2,
-  sales: [],
-  totalSale: 0,
-  getRandomCustPerHour: function () {
-    return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
-  },
-  cookiesPerHour: function () {
-    let customersThisHour = this.getRandomCustPerHour();
-    let cookiesSoldThisHour = Math.ceil(customersThisHour * this.avg);
-    return (cookiesSoldThisHour);
-  },
-  getTime: function () {
-    for (let i = 0; i < timeOfDay.length; i++) {
-      let value = this.cookiesPerHour();
-      this.sales.push(value);
-      this.totalSale += value;
-    }
-  },
-  render: function () {
-    this.getTime();
-    let list = document.createElement('ul');
-    mypage.appendChild(list);
-    list.textContent = `${this.name}`;
-    for (let i = 0; i < this.sales.length; i++) {
-      let listAmt = document.createElement('li');
-      list.appendChild(listAmt);
-      listAmt.textContent = `${timeOfDay[i]}: ${this.sales[i]}`;
-    }
-    let totalAmt = document.createElement('li');
-    list.appendChild(totalAmt);
-    totalAmt.textContent = `Total: ${this.totalSale}`;
-  },
+function renderTableFooter() {
+  for (let i = -1; i < timeOfDay.length; i++) {
+    let thData = document.createElement('td');
+    tableFooter.appendChild(thData);
+    thData.textContent = timeOfDay[i];
+  }
 }
+renderTableFooter();
 
-tokyo.render();
-
-let dubai = {
-  name: 'Dubai',
-  min: 11,
-  max: 38,
-  avg: 3.7,
-  sales: [],
-  totalSale: 0,
-  getRandomCustPerHour: function () {
-    return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
-  },
-  cookiesPerHour: function () {
-    let customersThisHour = this.getRandomCustPerHour();
-    let cookiesSoldThisHour = Math.ceil(customersThisHour * this.avg);
-    return (cookiesSoldThisHour);
-  },
-  getTime: function () {
-    for (let i = 0; i < timeOfDay.length; i++) {
-      let value = this.cookiesPerHour();
-      this.sales.push(value);
-      this.totalSale += value;
-    }
-  },
-  render: function () {
-    this.getTime();
-    let list = document.createElement('ul');
-    mypage.appendChild(list);
-    list.textContent = `${this.name}`;
-    for (let i = 0; i < this.sales.length; i++) {
-      let listAmt = document.createElement('li');
-      list.appendChild(listAmt);
-      listAmt.textContent = `${timeOfDay[i]}: ${this.sales[i]}`;
-    }
-    let totalAmt = document.createElement('li');
-    list.appendChild(totalAmt);
-    totalAmt.textContent = `Total: ${this.totalSale}`;
-  },
+function renderTableHeader() {
+  for (let i = -1; i < timeOfDay.length; i++) {
+    let thData = document.createElement('th');
+    tableHead.appendChild(thData);
+    thData.textContent = timeOfDay[i];
+  }
 }
+renderTableHeader();
 
-dubai.render();
 
-let paris = {
-  name: 'Paris',
-  min: 20,
-  max: 38,
-  avg: 2.3,
-  sales: [],
-  totalSale: 0,
-  getRandomCustPerHour: function () {
-    return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
-  },
-  cookiesPerHour: function () {
-    let customersThisHour = this.getRandomCustPerHour();
-    let cookiesSoldThisHour = Math.ceil(customersThisHour * this.avg);
-    return (cookiesSoldThisHour);
-  },
-  getTime: function () {
-    for (let i = 0; i < timeOfDay.length; i++) {
-      let value = this.cookiesPerHour();
-      this.sales.push(value);
-      this.totalSale += value;
-    }
-  },
-  render: function () {
-    this.getTime();
-    let list = document.createElement('ul');
-    mypage.appendChild(list);
-    list.textContent = `${this.name}`;
-    for (let i = 0; i < this.sales.length; i++) {
-      let listAmt = document.createElement('li');
-      list.appendChild(listAmt);
-      listAmt.textContent = `${timeOfDay[i]}: ${this.sales[i]}`;
-    }
-    let totalAmt = document.createElement('li');
-    list.appendChild(totalAmt);
-    totalAmt.textContent = `Total: ${this.totalSale}`;
-  },
-}
+let seattle = new Store('Seattle', 23, 65, 6.3, [], 0);
+let tokyo = new Store('Tokyo', 3, 24, 1.2, [], 0);
+let dubai = new Store('Dubai', 11, 38, 3.7, [], 0);
+let paris = new Store('Paris', 20, 38, 2.3, [], 0);
+let lima = new Store('Lima', 2, 16, 4.6, [], 0);
 
-paris.render();
-
-let lima = {
-  name: 'Lima',
-  min: 2,
-  max: 16,
-  avg: 4.6,
-  sales: [],
-  totalSale: 0,
-  getRandomCustPerHour: function () {
-    return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
-  },
-  cookiesPerHour: function () {
-    let customersThisHour = this.getRandomCustPerHour();
-    let cookiesSoldThisHour = Math.ceil(customersThisHour * this.avg);
-    return (cookiesSoldThisHour);
-  },
-  getTime: function () {
-    for (let i = 0; i < timeOfDay.length; i++) {
-      let value = this.cookiesPerHour();
-      this.sales.push(value);
-      this.totalSale += value;
-    }
-  },
-  render: function () {
-    this.getTime();
-    let list = document.createElement('ul');
-    mypage.appendChild(list);
-    list.textContent = `${this.name}`;
-    for (let i = 0; i < this.sales.length; i++) {
-      let listAmt = document.createElement('li');
-      list.appendChild(listAmt);
-      listAmt.textContent = `${timeOfDay[i]}: ${this.sales[i]}`;
-    }
-    let totalAmt = document.createElement('li');
-    list.appendChild(totalAmt);
-    totalAmt.textContent = `Total: ${this.totalSale}`;
-  },
-}
-
-lima.render();
