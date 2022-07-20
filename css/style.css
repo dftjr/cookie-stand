@@ -10,8 +10,8 @@ DIV.link {
   text-align: center;
 }
 
- table,tbody, td {
+ table, tbody, td, tf, th {
   border: 2px solid black;
   text-align: center;
-  
+  padding-inline: 10px;
  }
