@@ -20,22 +20,23 @@ function Store(name, min, max, avg, sales, totals) {
   this.sales = [];
   this.totals = 0;
 
-  function getRandomCustPerHour() {
-    return Math.floor(Math.random() * (max - min + 1) + min);
+  this.getRandomCustPerHour = function() {
+    return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
   }
   
-  function cookiesPerHour() {
+  this.cookiesPerHour = function() {
     for (let i = 0; i < timeOfDay.length; i++) {
-    let customersThisHour = getRandomCustPerHour();
-    let cookiesSoldThisHour = Math.ceil(customersThisHour * avg);
-    sales.push(cookiesSoldThisHour);
-    totals += cookiesSoldThisHour;
-    console.log(totals);
-    console.log(sales);
+    let customersThisHour = this.getRandomCustPerHour();
+    let cookiesSoldThisHour = Math.ceil(customersThisHour * this.avg);
+    this.sales.push(cookiesSoldThisHour);
+    this.totals += cookiesSoldThisHour;
+    console.log(this.totals);
+    console.log(this.sales);
     }
   } 
-  cookiesPerHour();
-  console.log(sales);
+  this.cookiesPerHour();
+  console.log(this.sales)
+  
   
   this.renderTable = function() {
     let trRow = document.createElement('tr');
@@ -43,17 +44,17 @@ function Store(name, min, max, avg, sales, totals) {
 
     let tdName = document.createElement('td');
     trRow.appendChild(tdName);
-    tdName.textContent = name;
+    tdName.textContent = this.name;
 
-    for (let i = 0; i < sales.length; i++) {
+    for (let i = 0; i < this.sales.length; i++) {
       let tdCookies = document.createElement('td');
       trRow.appendChild(tdCookies);
-      tdCookies.textContent = sales[i];
+      tdCookies.textContent = this.sales[i];
     }
 
     let tdTotal = document.createElement('td');
     trRow.appendChild(tdTotal);
-    tdTotal.textContent = totals;
+    tdTotal.textContent = this.totals;
   } 
   this.renderTable();
 }
@@ -77,9 +78,8 @@ function renderTableHeader() {
 renderTableHeader();
 
 
-let seattle = new Store('Seattle', 23, 65, 6.3, [], 0);
-let tokyo = new Store('Tokyo', 3, 24, 1.2, [], 0);
-let dubai = new Store('Dubai', 11, 38, 3.7, [], 0);
-let paris = new Store('Paris', 20, 38, 2.3, [], 0);
-let lima = new Store('Lima', 2, 16, 4.6, [], 0);
-
+let seattle = new Store('Seattle', 23, 65, 6.3);
+let tokyo = new Store('Tokyo', 3, 24, 1.2);
+let dubai = new Store('Dubai', 11, 38, 3.7);
+let paris = new Store('Paris', 20, 38, 2.3);
+let lima = new Store('Lima', 2, 16, 4.6);
