@@ -10,11 +10,8 @@ DIV.link {
   text-align: center;
 }
 
-ul {
-  border: 2px solid rebeccapurple;
-  margin: 25px;
-}
-
-table, td, th {
-  border: 2px solid red;
-}
+ table,tbody, td {
+  border: 2px solid black;
+  text-align: center;
+  
+ }
