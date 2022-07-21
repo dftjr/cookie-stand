@@ -1,16 +1,39 @@
 'use strict';
 
-let testPage = document.getElementById('test');
-console.log(testPage);
+// let testPage = document.getElementById('test');
+
 let tableBody = document.querySelector('tbody');
-console.log(tableBody);
 let tableHead = document.querySelector('thead');
-console.log(tableHead);
 let tableFooter = document.querySelector('tfoot');
-console.log(tableFooter);
 
 
 let timeOfDay = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+
+
+let seattle = new Store('Seattle', 23, 65, 6.3);
+let tokyo = new Store('Tokyo', 3, 24, 1.2);
+let dubai = new Store('Dubai', 11, 38, 3.7);
+let paris = new Store('Paris', 20, 38, 2.3);
+let lima = new Store('Lima', 2, 16, 4.6);
+
+let storeArray = [seattle, tokyo, dubai, paris, lima];
+
+let finalTotal = [];
+
+function dailyTotal () {
+  let newTotal = 0;
+  finalTotal =[];
+  for (let j = 0; j < timeOfDay.length; j++) {
+    newTotal = 0;
+    for (let i = 0; i < storeArray.length; i++) {
+    newTotal += storeArray[i].sales[j];
+  }
+  finalTotal.push(newTotal);
+  }
+}
+dailyTotal();
+
+console.log(finalTotal);
 
 function Store(name, min, max, avg, sales, totals) {
   this.name = name;
@@ -30,13 +53,9 @@ function Store(name, min, max, avg, sales, totals) {
     let cookiesSoldThisHour = Math.ceil(customersThisHour * this.avg);
     this.sales.push(cookiesSoldThisHour);
     this.totals += cookiesSoldThisHour;
-    console.log(this.totals);
-    console.log(this.sales);
     }
   } 
   this.cookiesPerHour();
-  console.log(this.sales)
-  
   
   this.renderTable = function() {
     let trRow = document.createElement('tr');
@@ -52,34 +71,40 @@ function Store(name, min, max, avg, sales, totals) {
       tdCookies.textContent = this.sales[i];
     }
 
-    let tdTotal = document.createElement('td');
-    trRow.appendChild(tdTotal);
-    tdTotal.textContent = this.totals;
+    let thTotals = document.createElement('td');
+    trRow.appendChild(thTotals);
+    thTotals.textContent = this.totals;
   } 
   this.renderTable();
 }
 
 function renderTableFooter() {
-  for (let i = -1; i < timeOfDay.length; i++) {
-    let thData = document.createElement('td');
-    tableFooter.appendChild(thData);
-    thData.textContent = timeOfDay[i];
+  let tfLable = document.createElement('td');
+    tableFooter.appendChild(tfLable);
+    tfLable.textContent = '';
+  for (let i = 0; i < timeOfDay.length; i++) {
+    let tfData = document.createElement('td');
+    tableFooter.appendChild(tfData);
+    tfData.textContent = finalTotal[i];
   }
 }
 renderTableFooter();
 
+
 function renderTableHeader() {
-  for (let i = -1; i < timeOfDay.length; i++) {
+  let thTopHeader = document.createElement('tr');
+  tableHead.appendChild(thTopHeader);
+  thTopHeader.textContent = 'Hours of Operation';
+  let thLabel = document.createElement('th');
+    tableHead.appendChild(thLabel);
+    thLabel.textContent = '';
+  for (let i = 0; i < timeOfDay.length; i++) {
     let thData = document.createElement('th');
     tableHead.appendChild(thData);
     thData.textContent = timeOfDay[i];
   }
+  let thTotals = document.createElement('th');
+  tableHead.appendChild(thTotals);
+  thTotals.textContent = 'Totals\n(start-close):';
 }
 renderTableHeader();
-
-
-let seattle = new Store('Seattle', 23, 65, 6.3);
-let tokyo = new Store('Tokyo', 3, 24, 1.2);
-let dubai = new Store('Dubai', 11, 38, 3.7);
-let paris = new Store('Paris', 20, 38, 2.3);
-let lima = new Store('Lima', 2, 16, 4.6);
