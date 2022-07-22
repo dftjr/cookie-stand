@@ -17,8 +17,34 @@ let paris = new Store('Paris', 20, 38, 2.3);
 let lima = new Store('Lima', 2, 16, 4.6);
 
 let storeArray = [seattle, tokyo, dubai, paris, lima];
-
 let finalTotal = [];
+
+console.log('form js');
+let storeForm = document.getElementById('addStoreForm');
+function storeSubmit (event) {
+  event.preventDefault();
+  let name = event.target.name.value;
+  let min = parseInt(event.target.min.value, 10);
+  let max = parseInt(event.target.max.value, 10);
+  let avg = parseInt(event.target.avg.value, 10);
+
+  let addStore = new Store(name, min, max, avg);
+  storeArray.push(addStore);
+  finalTotal += addStore;
+
+
+
+}
+
+storeForm.addEventListener('submit', storeSubmit);
+
+
+
+
+
+
+
+
 
 function dailyTotal () {
   let newTotal = 0;
@@ -32,8 +58,6 @@ function dailyTotal () {
   }
 }
 dailyTotal();
-
-console.log(finalTotal);
 
 function Store(name, min, max, avg, sales, totals) {
   this.name = name;
