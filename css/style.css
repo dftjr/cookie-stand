@@ -1,27 +1,115 @@
-DIV.link {
-  border: 2px solid rebeccapurple;
-  padding: 50px;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+html {
+  display:flex;
+  margin: auto;
+  background-color: #c3d9f2;
 }
 
- table, tbody, td, tf, th {
-  border: 2px solid black;
-  text-align: center;
-  padding-inline: 10px;
- }
+body {
+  flex-direction: column;
+  margin: auto;
+  width: 1000px;
+}   
 
- DIV.fish {
-  padding: 50px;
-  margin: 50;
+/* header {
+  background-color: #173558;
+  height: 
+
+
+} */
+
+footer {
+
+} */
+
+.banner {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.banner img {
+  display: flex;
+  position: relative;
+  width: 200px;
+  top: 200px;
+}
+
+.navigation {
+  position:absolute;
+  background: deepskyblue;
+  left: 140px;
+  height: 100%;
+}
+
+.navigation a {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  color: white;
+}
+
+.navigation a:hover {
+  background: #c3d9f2;
+}
+
+section {
   position: absolute;
-  top: 25%;
-  left: 50%;
-  margin-right: 50%;
-  transform: translate(-50%, -50%);
- }
+  display: flex;
+  flex-direction: column;
+  background: deepskyblue;
+  height: 100%;
+  top:0;
+  right:0;
+  padding: 1em;
+  color: rgb(27, 71, 102);
+}
+
+h1 {
+  font-family: cursive;
+  color: rgb(27, 71, 102);
+  border: 5px solid deepskyblue;
+  display: flex;
+  font-size: 100px;
+  padding-right: 200px;
+}
+
+h2 {
+  font-family: monospace;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 75px;
+  font-size: 50px;
+  width: 300px;
+}
+
+h3 {
+  color: deepskyblue;
+  font-size: 25px;
+  font-family:fantasy;
+  margin-bottom: 25px;
+  
+}
+
+section ul {
+  font-family:fantasy;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  display:flex;
+  left: 20px;
+  height: 175px;
+  text-align: left;
+  padding-left: 5px;
+  background-color: #c3d9f2;
+
+}
+
+link {
+  
+}
+/* .decorative {
+    background-repeat: no-repeat;
+    background-size: 100% 2px;
+    background-position: 0 center;
+}
+ */
