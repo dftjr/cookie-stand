@@ -10,16 +10,6 @@ body {
   width: 1000px;
 }   
 
-/* header {
-  background-color: #173558;
-  height: 
-
-
-} */
-
-footer {
-
-} */
 
 .banner {
   display: flex;
@@ -103,13 +93,3 @@ section ul {
   background-color: #c3d9f2;
 
 }
-
-link {
-  
-}
-/* .decorative {
-    background-repeat: no-repeat;
-    background-size: 100% 2px;
-    background-position: 0 center;
-}
- */
