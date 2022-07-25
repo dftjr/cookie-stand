@@ -1,11 +1,8 @@
 'use strict';
 
-// let testPage = document.getElementById('test');
-
 let tableBody = document.querySelector('tbody');
 let tableHead = document.querySelector('thead');
 let tableFooter = document.querySelector('tfoot');
-
 
 let timeOfDay = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
@@ -32,10 +29,11 @@ function storeSubmit (event) {
   storeArray.push(addStore);
   finalTotal += addStore;
 
+  document.getElementById('tbody').deleteRow(-1);
+  renderTableFooter();
 
 
 }
-
 storeForm.addEventListener('submit', storeSubmit);
 
 
@@ -104,31 +102,44 @@ function Store(name, min, max, avg, sales, totals) {
 
 function renderTableFooter() {
   let tfLable = document.createElement('td');
-    tableFooter.appendChild(tfLable);
-    tfLable.textContent = '';
+  let total = document.createElement('td');
+  tableFooter.appendChild(tfLable);
+  tfLable.textContent = '';
+  
   for (let i = 0; i < timeOfDay.length; i++) {
     let tfData = document.createElement('td');
+
     tableFooter.appendChild(tfData);
     tfData.textContent = finalTotal[i];
+    total += finalTotal;
+    console.log(finalTotal);
   }
+
+  tableFooter.appendChild(thTotals);
+  thTotals.textContent = 'Daily Totals';
+
 }
 renderTableFooter();
 
 
 function renderTableHeader() {
   let thTopHeader = document.createElement('tr');
+  let thLabel = document.createElement('th');
+  let thTotals = document.createElement('th');
+  
   tableHead.appendChild(thTopHeader);
   thTopHeader.textContent = 'Hours of Operation';
-  let thLabel = document.createElement('th');
-    tableHead.appendChild(thLabel);
-    thLabel.textContent = '';
+  
+  tableHead.appendChild(thLabel);
+  thLabel.textContent = 'Stores';
+  
   for (let i = 0; i < timeOfDay.length; i++) {
     let thData = document.createElement('th');
     tableHead.appendChild(thData);
     thData.textContent = timeOfDay[i];
   }
-  let thTotals = document.createElement('th');
+  
   tableHead.appendChild(thTotals);
-  thTotals.textContent = 'Totals\n(start-close):';
+  thTotals.textContent = 'Daily Totals';
 }
 renderTableHeader();
